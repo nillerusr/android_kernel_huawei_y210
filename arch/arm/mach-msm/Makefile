@@ -262,3 +262,4 @@ obj-$(CONFIG_MSM_NATIVE_RESTART) += restart.o
 obj-$(CONFIG_HUAWEI_KERNEL) += hardware_self_adapt.o
 
 obj-$(CONFIG_MSM_PROC_COMM_REGULATOR) += proccomm-regulator.o
+obj-$(CONFIG_FORCE_FAST_CHARGE) 	+= fastchg.o

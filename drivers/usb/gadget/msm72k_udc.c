@@ -59,6 +59,10 @@ void android_delay_work_init(int add_flag);
 static u8 is_mmc_exist = false;
 #endif  /* CONFIG_USB_AUTO_INSTALL */
 
+#ifdef CONFIG_FORCE_FAST_CHARGE
+#include <linux/fastchg.h> /*Fast Charge header*/
+#endif
+
 static const char driver_name[] = "msm72k_udc";
 
 /* #define DEBUG */

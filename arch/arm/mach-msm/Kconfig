@@ -679,7 +679,14 @@ config MACH_MSM7X27A_U8685
 	default n
 	bool "MSM7X27A_U8685 SURF"
 	help
-	  Support for the HUAWEI 7X27A U8685 board.	  
+	  Support for the HUAWEI 7X27A U8685 board.
+	  
+config FORCE_FAST_CHARGE
+	bool "Force AC charge mode at will"
+	default y
+	help
+	  A simple sysfs interface to force adapters that
+	  are detected as USB to charge as AC.
 
 endmenu
 
