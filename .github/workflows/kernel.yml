@@ -15,7 +15,7 @@ jobs:
 
     - name: Build
       run: |
-        sudo apt install -y wget bc abootimg build-essential gcc-multilib make python2.7
+        sudo apt install -y wget bc abootimg build-essential gcc-multilib make python2.7 python-requests
         sudo dpkg --add-architecture i386
         sudo apt-get update
         sudo apt install -y zlib1g:i386
