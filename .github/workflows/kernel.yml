@@ -1,4 +1,4 @@
-name: Build cherry kernel for cactus
+name: Build kernel for huawei y210
 
 on:
   push:

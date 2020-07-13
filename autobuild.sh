@@ -15,7 +15,7 @@ fi
 [ -d $O ] || mkdir $O
 
 [ -f $O/.config ] || make O=$O cyanogenmod_y210_defconfig
-make O=$O -j$((1+1)) #$(nrproc --all)
+make O=$O -j$(($(nproc --all)+1))
 
 abootimg -u boot/boot.img -k $O/arch/arm/boot/zImage
 cd boot
