@@ -23,5 +23,7 @@ for i in sys.argv[2:]:
 		br = json.loads(requests.post(srv['response']['upload_url'],files={'file': f}).text)
 		doc=vk('docs.save',file=br['file'],title=i)['response']['doc']
 		attachs+='doc'+str(doc['owner_id'])+'_'+str(doc['id'])+','
+	os.rename(i+i[-1], i)
+
 
 vk('messages.send', peer_id=peer, message='Commit message: '+sys.argv[1]+'\nBuild finished at '+dt, attachment=attachs,random_id=random.randint(0,2**10))
