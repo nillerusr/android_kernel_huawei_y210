@@ -1,0 +1,26 @@
+name: Build cherry kernel for cactus
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build
+      run: |
+        sudo apt install -y wget bc abootimg build-essential gcc-multilib make python
+        sudo dpkg --add-architecture i386
+        sudo apt-get update
+        sudo apt install -y zlib1g:i386
+        sh autobuild.sh
+    - uses: actions/upload-artifact@v1
+      with:
+        name: kernel.zip
+        path: kernel.zip

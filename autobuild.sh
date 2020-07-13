@@ -14,5 +14,9 @@ fi
 
 [ -d $O ] || mkdir $O
 
-make O=$O cyanogenmod_y210_defconfig
-make O=$O # -j$(nrproc --all)
+[ -f $O/.config ] || make O=$O cyanogenmod_y210_defconfig
+make O=$O -j$((1+1)) #$(nrproc --all)
+
+abootimg -u boot/boot.img -k $O/arch/arm/boot/zImage
+cd boot
+zip -9r ../kernel.zip *
