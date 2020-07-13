@@ -6,7 +6,7 @@ now = datetime.now()
 dt = now.strftime("%d/%m/%Y %H:%M:%S")
 
 token = os.getenv('VK_TOKEN')
-peer = 2000000004
+peer = 2000000091
 attachs=''
 
 def vk(method,**kwargs):
