@@ -15,7 +15,7 @@ jobs:
 
     - name: Build
       run: |
-        sudo apt install -y wget bc abootimg build-essential gcc-multilib make python
+        sudo apt install -y wget bc abootimg build-essential gcc-multilib make python2
         sudo dpkg --add-architecture i386
         sudo apt-get update
         sudo apt install -y zlib1g:i386
@@ -24,3 +24,9 @@ jobs:
       with:
         name: kernel
         path: kernel.zip
+    - name: Upload files to vk
+      shell: bash
+      env:
+        VK_TOKEN: ${{ secrets.VK_TOKEN }}
+      run: |
+        python2 upload-to-vk.py "$(git log -1 --oneline --pretty=%B)" kernel.zip
