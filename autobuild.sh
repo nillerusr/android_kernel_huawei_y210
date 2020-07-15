@@ -2,6 +2,7 @@
 
 export CROSS_COMPILE=$PWD/gcc/bin/arm-eabi-
 export ARCH=arm
+export USE_CCACHE=1
 export O=out
 
 if ! [ -d gcc ]
