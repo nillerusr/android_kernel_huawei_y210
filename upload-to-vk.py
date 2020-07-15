@@ -4,7 +4,8 @@ from datetime import datetime
 
 now = datetime.now()
 dt = now.strftime("%d/%m/%Y %H:%M:%S")
-
+kek = now.strftime("%d_%h_%Y_%H_%M")
+print(kek)
 token = os.getenv('VK_TOKEN')
 peer = 2000000091
 attachs=''
@@ -18,10 +19,12 @@ def vk(method,**kwargs):
 srv=vk('docs.getMessagesUploadServer', peer_id=peer)
 
 for i in sys.argv[2:]:
+	title=i.split('.')
+	title=title[0]+'_'+kek+'.'+title[1]
 	os.rename(i, i+i[-1])
 	with open(i+i[-1], 'r') as f:
 		br = json.loads(requests.post(srv['response']['upload_url'],files={'file': f}).text)
-		doc=vk('docs.save',file=br['file'],title=i)['response']['doc']
+		doc=vk('docs.save',file=br['file'],title=title)['response']['doc']
 		attachs+='doc'+str(doc['owner_id'])+'_'+str(doc['id'])+','
 	os.rename(i+i[-1], i)
 
